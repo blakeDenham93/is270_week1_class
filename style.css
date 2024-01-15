@@ -1,14 +1,21 @@
-* {
-    box-sizing: border-box;
+/* style.css */
+
+body {
+    background: linear-gradient(to bottom left, #99ff33 9%, #ff99cc 83%);
 }
 
-.column{
-    float:left;
-    width: 50%;
+h1 {
+    font-family: fantasy;
 }
 
-.row::after{
-    content:"";
-    display: table;
-    clear:both;
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+}
+
+p {
+    font-family: fantasy;
 }
