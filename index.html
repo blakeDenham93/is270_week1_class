@@ -6,6 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Spotify Widget</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat API Example</title>
 </head>
 
 <body>
@@ -16,6 +19,38 @@
     <!-- Replace the URL inside src attribute with your Spotify playlist or track URL -->
     <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1Fa1IIVtEpGUcU" width="150" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 
+   <h1>Random Cat Images</h1>
+  <div id="catImages"></div>
+
+  <script>
+    // Function to fetch cat images from the Cat API and display them on the webpage
+    function fetchCatImages() {
+      fetch('https://api.thecatapi.com/v1/images/search')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to fetch cat images');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Display each cat image on the webpage
+          const catImagesDiv = document.getElementById('catImages');
+          data.forEach(cat => {
+            const imgElement = document.createElement('img');
+            imgElement.src = cat.url;
+            imgElement.alt = 'Cat Image';
+            catImagesDiv.appendChild(imgElement);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching cat images:', error);
+        });
+    }
+
+    // Call the function to fetch and display cat images when the page loads
+    window.onload = fetchCatImages;
+    </script>    
+    
     <div class="row">
         <div class="column">
             <img src="images/1.png" alt="Circumstantial" width="100%" height="auto">
